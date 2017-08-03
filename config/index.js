@@ -10,5 +10,6 @@ module.exports = {
     },
     dev: {
         port: 8000,
+        compileHandle: "freemarker",
     },
 };
