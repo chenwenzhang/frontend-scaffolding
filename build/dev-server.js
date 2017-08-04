@@ -5,8 +5,9 @@ const webpack = require("webpack");
 
 const config = require("../config");
 const routes = require("./routes");
+const pages = require("./pages");
+const pageConfigs = require("./page.configs");
 const webpackConfig = require("./webpack.dev.conf");
-const compileHandle = require(`./compile-handle-${config.dev.compileHandle}`);
 const app = express();
 const compiler = webpack(webpackConfig);
 const uri = "http://localhost:" + config.dev.port;
@@ -19,7 +20,18 @@ const hotMiddleware = require("webpack-hot-middleware")(compiler, {
     heartbeat: 2000,
 });
 
-compileHandle(app, compiler, devMiddleware, hotMiddleware);
+pages.forEach(page => {
+    let pageConfig = pageConfigs[page];
+    let route = pageConfig.route.length == 0 ? `/${page}` : pageConfig.route;
+    app.get(route, (req, res) => {
+        let templateFile = `${routes.dist}/${page}.${pageConfig.ext}`;
+        devMiddleware.fileSystem.readFile(templateFile, (err, data) => {
+            res.setHeader("Content-Type", "text/html;charset=UTF-8");
+            res.setHeader("Content-Length", data.length);
+            res.send(data);
+        });
+    });
+});
 
 app.use(require("connect-history-api-fallback")());
 app.use(devMiddleware);
@@ -28,16 +40,16 @@ app.use(`/${config.build.resourcesDirectory}`, express.static(routes.distSub.res
 
 compiler.plugin("compilation", function (compilation) {
     compilation.plugin("html-webpack-plugin-after-emit", (data, callback) => {
-        webpackHotMiddleware.publish({
+        hotMiddleware.publish({
             action: "reload",
         });
         callback();
     });
 });
 
-console.log('> Starting dev server...');
+console.log("> Starting dev server...");
 devMiddleware.waitUntilValid(() => {
-    console.log('> Listening at ' + uri + '\n');
+    console.log(`> Listening at ${uri}\n`);
     opn(uri);
 });
 

@@ -4,12 +4,16 @@ module.exports = {
     build: {
         publicPath: "/",
         resourcesDirectory: "resources",
-        viewExt: "ftl",
         commonChunkName: "vendors",
         minCommonChunks: 2,
+        pageConfig: {
+            engine: "html",
+            ext: "html",
+            route: "",
+            data: [],
+        },
     },
     dev: {
         port: 8000,
-        compileHandle: "freemarker",
     },
 };

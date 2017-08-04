@@ -38,7 +38,7 @@ module.exports = {
                 },
             },
             {
-                test: /\.ftl$/,
+                test: /\.(ftl|vm)$/,
                 loader: "html-withimg-loader?min=false",
             },
         ],

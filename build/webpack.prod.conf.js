@@ -8,6 +8,7 @@ const utils = require("./utils");
 const config = require("../config");
 const routes = require("./routes");
 const pages = require("./pages");
+const pageConfigs = require("./page.configs");
 
 let webpackConfig = merge(webpackBaseConfig, {
     plugins: [
@@ -30,8 +31,9 @@ let webpackConfig = merge(webpackBaseConfig, {
 });
 
 pages.forEach(page => {
+    let pageConfig = pageConfigs[page];
     webpackConfig.plugins.push(new HtmlWebpackPlugin({
-        filename: `${routes.distSub.views}/${page}.${config.build.viewExt}`,
+        filename: `${routes.distSub.views}/${page}.${pageConfig.ext}`,
         template: utils.htmlPath(page),
         chunks: [config.build.commonChunkName, page],
         inject: true,

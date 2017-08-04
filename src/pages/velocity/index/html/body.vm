@@ -1,0 +1,4 @@
+<h1>velocity template engine</h1>
+#foreach($student in $students)
+    <p>$student.name - $student.sex</p>
+#end
