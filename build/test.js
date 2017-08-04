@@ -1,3 +1,5 @@
-const merge = require("webpack-merge");
-const arr = [1, 2, 3].concat([3, 4, 5]);
+const arr = [1, 2].reduce((a, value) => {
+    a.push(value);
+    return a;
+}, []);
 console.log(arr);

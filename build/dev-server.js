@@ -3,6 +3,7 @@ const express = require("express");
 const opn = require("opn");
 const webpack = require("webpack");
 
+const utils = require("./utils");
 const config = require("../config");
 const routes = require("./routes");
 const pages = require("./pages");
@@ -22,13 +23,17 @@ const hotMiddleware = require("webpack-hot-middleware")(compiler, {
 
 pages.forEach(page => {
     let pageConfig = pageConfigs[page];
-    let route = pageConfig.route.length == 0 ? `/${page}` : pageConfig.route;
+    let route = pageConfig.route.length === 0 ? `/${page}` : pageConfig.route;
     app.get(route, (req, res) => {
         let templateFile = `${routes.dist}/${page}.${pageConfig.ext}`;
         devMiddleware.fileSystem.readFile(templateFile, (err, data) => {
+            let template = data.toString();
+            let pageData = utils.devPageData(page, pageConfig.data);
             res.setHeader("Content-Type", "text/html;charset=UTF-8");
-            res.setHeader("Content-Length", data.length);
-            res.send(data);
+            res.setHeader("Content-Length", template.length);
+            require(`./engine/${pageConfig.engine}`)(template, pageData, result => {
+                res.send(result);
+            });
         });
     });
 });
