@@ -5,11 +5,11 @@
 </head>
 <body>
 <div id="wrapper">
-    #include("../resources/components/header.ftl")
+    #include("../components/header.ftl")
     <div id="content">
         {{{ content }}}
     </div>
-    #include("../resources/components/footer.ftl")
+    #include("../components/footer.ftl")
 </div>
 </body>
 </html>
