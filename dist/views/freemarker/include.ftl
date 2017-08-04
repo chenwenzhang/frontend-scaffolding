@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>${title!""}</title>
-<link href="/resources/css/vendors.301681d7997371c293be.css" rel="stylesheet"><link href="/resources/css/freemarker/include.301681d7997371c293be.css" rel="stylesheet"></head>
+<link href="/resources/css/vendors.3708380dc1f117192cfe.css" rel="stylesheet"><link href="/resources/css/freemarker/include.3708380dc1f117192cfe.css" rel="stylesheet"></head>
 <body>
 <div id="wrapper">
     <div id="header">
@@ -15,5 +15,5 @@
     footer
 </div>
 </div>
-<script type="text/javascript" src="/resources/js/vendors.301681d7997371c293be.js"></script><script type="text/javascript" src="/resources/js/freemarker/include.301681d7997371c293be.js"></script></body>
+<script type="text/javascript" src="/resources/js/vendors.3708380dc1f117192cfe.js"></script><script type="text/javascript" src="/resources/js/freemarker/include.3708380dc1f117192cfe.js"></script></body>
 </html>

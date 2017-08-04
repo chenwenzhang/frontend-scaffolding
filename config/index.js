@@ -15,5 +15,7 @@ module.exports = {
     },
     dev: {
         port: 8000,
+        autoOpenBrowser: true,
+        openRoute: "/freemarker/index"
     },
 };

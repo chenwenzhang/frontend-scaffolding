@@ -12,6 +12,7 @@ const webpackConfig = require("./webpack.dev.conf");
 const app = express();
 const compiler = webpack(webpackConfig);
 const uri = "http://localhost:" + config.dev.port;
+const openUri = `${uri}${config.dev.openRoute}`;
 const devMiddleware = require("webpack-dev-middleware")(compiler, {
     publicPath: webpackConfig.output.publicPath,
     quiet: true,
@@ -54,8 +55,11 @@ compiler.plugin("compilation", function (compilation) {
 
 console.log("> Starting dev server...");
 devMiddleware.waitUntilValid(() => {
-    console.log(`> Listening at ${uri}\n`);
-    opn(uri);
+    console.log(`> Listening at ${uri}`);
+    if (config.dev.autoOpenBrowser) {
+        console.log(`> Open uri ${openUri}\n`);
+        opn(openUri);
+    }
 });
 
 const server = app.listen(config.dev.port);

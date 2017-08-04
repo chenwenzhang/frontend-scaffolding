@@ -1,4 +1,4 @@
 
-module.exports = function(template, data, callback){
+module.exports = (template, data, callback) => {
     callback(template);
 };
