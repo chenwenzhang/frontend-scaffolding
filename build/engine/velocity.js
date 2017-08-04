@@ -1,4 +1,5 @@
-
+const Velocity = require("velocityjs");
 module.exports = (template, data, callback) => {
-    callback(template);
+    let result = Velocity.render(template, data);
+    callback(result);
 };

@@ -1,6 +1,6 @@
 <h1>velocity template engine</h1>
-<img src="../../../../resources/images/SpiderMan.jpg">
-<img src="../../../../resources/images/dinosaur.png">
 #foreach($student in $students)
     <p>$student.name - $student.sex</p>
 #end
+<img src="../../../../resources/images/SpiderMan.jpg">
+<img src="../../../../resources/images/dinosaur.png">

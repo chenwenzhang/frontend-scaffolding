@@ -1,0 +1,17 @@
+{
+  "title": "velocity模板引擎",
+  "students": [
+    {
+      "name": "陈",
+      "sex": "男"
+    },
+    {
+      "name": "文",
+      "sex": "女"
+    },
+    {
+      "name": "章",
+      "sex": "男"
+    }
+  ]
+}
