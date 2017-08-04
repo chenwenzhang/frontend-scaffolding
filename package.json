@@ -5,7 +5,6 @@
   "scripts": {
     "test": "node build/test.js",
     "build": "node build/build.js",
-    "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js"
   },
   "keywords": [],
