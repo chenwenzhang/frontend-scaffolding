@@ -6,6 +6,12 @@ module.exports = {
         resourcesDirectory: "resources",
         commonChunkName: "vendors",
         minCommonChunks: 2,
+        provides: {
+            "$": "jquery",
+            "jQuery": "jquery",
+            "window.$": "jquery",
+            "window.jQuery": "jquery",
+        },
         pageConfig: {
             engine: "html",
             ext: "html",

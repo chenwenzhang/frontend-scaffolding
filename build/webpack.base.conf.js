@@ -45,5 +45,6 @@ module.exports = {
     },
     plugins: [
         new ExtractTextWebpackPlugin(`${config.build.resourcesDirectory}/css/[name].[hash].css`),
+        new webpack.ProvidePlugin(config.build.provides),
     ]
 };
