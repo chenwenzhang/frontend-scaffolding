@@ -19,7 +19,7 @@ exports.devPageData = (page, files) => {
     return files.reduce((data, file) => {
         file = `${routes.srcSub.pages}/${page}/${file}`;
         if (fs.existsSync(file)) {
-            data = merge(data, require(file));
+            data = merge(data, JSON.parse(fs.readFileSync(file)));
         }
         return data;
     }, {});
