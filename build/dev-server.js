@@ -1,11 +1,13 @@
 const fs = require("fs");
 const express = require("express");
+const bodyParser = require("body-parser");
 const opn = require("opn");
 const webpack = require("webpack");
 
 const utils = require("./utils");
 const config = require("../config");
 const routes = require("./routes");
+const mocks = require("./mocks");
 const pages = require("./pages");
 const pageConfigs = require("./page.configs");
 const webpackConfig = require("./webpack.dev.conf");
@@ -20,6 +22,17 @@ const devMiddleware = require("webpack-dev-middleware")(compiler, {
 const hotMiddleware = require("webpack-hot-middleware")(compiler, {
     log: () => {},
     heartbeat: 2000,
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+Object.keys(mocks).forEach(mockMethod => {
+    Object.keys(mocks[mockMethod]).forEach(mockRoute => {
+        app[mockMethod](mockRoute, (req, res) => {
+            res.send(mocks.handler(mocks[mockMethod][mockRoute], req));
+        });
+    });
 });
 
 pages.forEach(page => {

@@ -12,6 +12,7 @@ routes.srcSub = {};
 routes.srcSub.pages = `${routes.src}/pages`;
 routes.srcSub.resources = `${routes.src}/resources`;
 routes.srcSub.layouts = `${routes.src}/layouts`;
+routes.srcSub.mocks = `${routes.src}/mocks`;
 
 routes.distSub = {};
 routes.distSub.views = `${routes.dist}/views`;
