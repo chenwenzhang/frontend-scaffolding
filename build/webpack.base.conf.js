@@ -41,6 +41,14 @@ module.exports = {
                 test: /\.(html|ftl|vm)$/,
                 loader: "html-withimg-loader?min=false",
             },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "babel-loader",
+                query: {
+                    presets: ["es2015"],
+                },
+            },
         ],
     },
     plugins: [

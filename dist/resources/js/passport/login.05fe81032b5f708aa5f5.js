@@ -1,0 +1,1 @@
+webpackJsonp([1],{12:function(n,o,s){"use strict";(function(n){s(13),n(function(){n("#loginForm").on("submit",function(){var o={username:n.trim(n("#username").val()),password:n.trim(n("#password").val())};return n.post("/passport/login",o,function(n){console.log(n)},"json"),!1})})}).call(o,s(1))},13:function(n,o){}},[12]);

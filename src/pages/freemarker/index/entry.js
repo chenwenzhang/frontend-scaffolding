@@ -1,4 +1,8 @@
 require("../../../resources/css/base.css");
 require("./style.css");
-alert(jQuery);
-alert($);
+
+let api = "hello";
+$(() => {
+    console.log(api);
+    console.log(123);
+});
