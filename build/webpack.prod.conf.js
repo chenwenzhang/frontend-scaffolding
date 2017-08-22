@@ -25,7 +25,6 @@ let webpackConfig = merge(webpackBaseConfig, {
             compress: {
                 warnings: false,
             },
-            sourceMap: true,
         }),
     ],
 });
