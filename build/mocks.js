@@ -16,7 +16,7 @@ module.exports = glob.sync(`${routes.srcSub.mocks}/**/config.json`).reduce((mock
     post: {},
     get: {},
     handler: (config, req) => {
-        if (config.type == "json") {
+        if (config.type === "json") {
             return utils.requireJsonFile(config.file);
         } else {
             let exec = require(config.file);

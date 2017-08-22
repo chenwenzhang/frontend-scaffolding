@@ -28,11 +28,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 Object.keys(mocks).forEach(mockMethod => {
-    Object.keys(mocks[mockMethod]).forEach(mockRoute => {
-        app[mockMethod](mockRoute, (req, res) => {
-            res.send(mocks.handler(mocks[mockMethod][mockRoute], req));
+    if (mockMethod !== "handler") {
+        Object.keys(mocks[mockMethod]).forEach(mockRoute => {
+            app[mockMethod](mockRoute, (req, res) => {
+                res.send(mocks.handler(mocks[mockMethod][mockRoute], req));
+            });
         });
-    });
+    }
 });
 
 pages.forEach(page => {
